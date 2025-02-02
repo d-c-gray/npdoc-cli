@@ -1,0 +1,38 @@
+{
+ "cli.build": [
+  {
+   "is_class": false,
+   "is_explicit": false,
+   "module": "npdoc_cli.cli",
+   "module_short": "npdoc_cli.cli",
+   "name": "build"
+  }
+ ],
+ "cli.dispatch": [
+  {
+   "is_class": false,
+   "is_explicit": false,
+   "module": "npdoc_cli.cli",
+   "module_short": "npdoc_cli.cli",
+   "name": "dispatch"
+  }
+ ],
+ "cli.parse_args": [
+  {
+   "is_class": false,
+   "is_explicit": false,
+   "module": "npdoc_cli.cli",
+   "module_short": "npdoc_cli.cli",
+   "name": "parse_args"
+  }
+ ],
+ "cli.program": [
+  {
+   "is_class": false,
+   "is_explicit": false,
+   "module": "npdoc_cli.cli",
+   "module_short": "npdoc_cli.cli",
+   "name": "program"
+  }
+ ]
+}

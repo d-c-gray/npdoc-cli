@@ -1,0 +1,190 @@
+{
+ "Path": [
+  {
+   "is_class": true,
+   "is_explicit": false,
+   "module": "pathlib",
+   "module_short": "pathlib",
+   "name": "Path"
+  },
+  {
+   "is_class": true,
+   "is_explicit": false,
+   "module": "pathlib",
+   "module_short": "pathlib",
+   "name": "PurePath"
+  },
+  {
+   "is_class": false,
+   "is_explicit": false,
+   "module": "pathlib",
+   "module_short": "pathlib",
+   "name": "Path"
+  }
+ ],
+ "args": [
+  {
+   "is_class": false,
+   "is_explicit": false,
+   "module": "argparse",
+   "module_short": "argparse",
+   "name": "Namespace"
+  }
+ ],
+ "cli.build": [
+  {
+   "is_class": false,
+   "is_explicit": false,
+   "module": "npdoc_cli._interface",
+   "module_short": "npdoc_cli",
+   "name": "NumpyDocCLI.build"
+  },
+  {
+   "is_class": false,
+   "is_explicit": false,
+   "module": "npdoc_cli",
+   "module_short": "npdoc_cli",
+   "name": "NumpyDocCLI.build"
+  },
+  {
+   "is_class": false,
+   "is_explicit": false,
+   "module": "npdoc_cli.cli",
+   "module_short": "npdoc_cli.cli",
+   "name": "build"
+  }
+ ],
+ "cli.dispatch": [
+  {
+   "is_class": false,
+   "is_explicit": false,
+   "module": "npdoc_cli._interface",
+   "module_short": "npdoc_cli",
+   "name": "NumpyDocCLI.dispatch"
+  },
+  {
+   "is_class": false,
+   "is_explicit": false,
+   "module": "npdoc_cli",
+   "module_short": "npdoc_cli",
+   "name": "NumpyDocCLI.dispatch"
+  },
+  {
+   "is_class": false,
+   "is_explicit": false,
+   "module": "npdoc_cli.cli",
+   "module_short": "npdoc_cli.cli",
+   "name": "dispatch"
+  }
+ ],
+ "cli.parse_args": [
+  {
+   "is_class": false,
+   "is_explicit": false,
+   "module": "npdoc_cli._interface",
+   "module_short": "npdoc_cli",
+   "name": "NumpyDocCLI.parse_args"
+  },
+  {
+   "is_class": false,
+   "is_explicit": false,
+   "module": "npdoc_cli",
+   "module_short": "npdoc_cli",
+   "name": "NumpyDocCLI.parse_args"
+  },
+  {
+   "is_class": false,
+   "is_explicit": false,
+   "module": "npdoc_cli.cli",
+   "module_short": "npdoc_cli.cli",
+   "name": "parse_args"
+  }
+ ],
+ "cli.print_help": [
+  {
+   "is_class": false,
+   "is_explicit": false,
+   "module": "npdoc_cli._interface",
+   "module_short": "npdoc_cli",
+   "name": "NumpyDocCLI.print_help"
+  },
+  {
+   "is_class": false,
+   "is_explicit": false,
+   "module": "npdoc_cli",
+   "module_short": "npdoc_cli",
+   "name": "NumpyDocCLI.print_help"
+  },
+  {
+   "is_class": false,
+   "is_explicit": false,
+   "module": "npdoc_cli.cli",
+   "module_short": "npdoc_cli.cli",
+   "name": "print_help"
+  }
+ ],
+ "cli.program": [
+  {
+   "is_class": false,
+   "is_explicit": false,
+   "module": "npdoc_cli._interface",
+   "module_short": "npdoc_cli",
+   "name": "NumpyDocCLI.program"
+  },
+  {
+   "is_class": false,
+   "is_explicit": false,
+   "module": "npdoc_cli",
+   "module_short": "npdoc_cli",
+   "name": "NumpyDocCLI.program"
+  },
+  {
+   "is_class": false,
+   "is_explicit": false,
+   "module": "npdoc_cli.cli",
+   "module_short": "npdoc_cli.cli",
+   "name": "program"
+  }
+ ],
+ "cli.reset": [
+  {
+   "is_class": false,
+   "is_explicit": false,
+   "module": "npdoc_cli._interface",
+   "module_short": "npdoc_cli",
+   "name": "NumpyDocCLI.reset"
+  },
+  {
+   "is_class": false,
+   "is_explicit": false,
+   "module": "npdoc_cli",
+   "module_short": "npdoc_cli",
+   "name": "NumpyDocCLI.reset"
+  },
+  {
+   "is_class": false,
+   "is_explicit": false,
+   "module": "npdoc_cli.cli",
+   "module_short": "npdoc_cli.cli",
+   "name": "reset"
+  }
+ ],
+ "hello": [
+  {
+   "is_class": false,
+   "is_explicit": false,
+   "module": "builtins",
+   "module_short": "builtins",
+   "name": "function"
+  }
+ ],
+ "my_int": [
+  {
+   "is_class": true,
+   "is_explicit": false,
+   "module": "__main__",
+   "module_short": "__main__",
+   "name": "my_int"
+  }
+ ]
+}

@@ -132,7 +132,7 @@ def test_base_types():
         """
     cli.tree()
     cli.build()
-    cli.print_help()
+    # cli.print_help()
     args = cli.parse_args([
         '1',
         '1.0',

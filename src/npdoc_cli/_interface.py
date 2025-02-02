@@ -133,7 +133,7 @@ class NumpyDocCommand():
         # scrape signature and doc strings
         doc = _scrape(function)
         params = doc['Parameters']
-        summary = doc['Summary']
+        summary = ' '.join(doc['Summary'] + doc['Extended Summary'])
         defaults = self.defaults
         types = self.types
 
@@ -173,7 +173,6 @@ class NumpyDocCommand():
 
                 # flag as a required key word argument or not
                 arg_ins.kwa['default'] = defaults[p.name]
-                arg_ins.kwa['required'] = 'cli required' in p.type
 
             # bool flags require a default
             # check for matching names
@@ -199,6 +198,7 @@ class NumpyDocCommand():
                 ptype = types[p.name]
                 if list == _typing.get_origin(ptype):
                     arg_ins.kwa['nargs'] = '+'
+                    arg_ins.kwa['action'] =  'extend'
                     type_args = _typing.get_args(ptype)
                     arg_ins.kwa['type'] = type_args[0]
                 # not a special type of input, pass as given
@@ -242,9 +242,10 @@ class NumpyDocCommand():
 
             # count actions shouldn't pass there type
             if 'action' in arg_ins.kwa:
-                if arg_ins.kwa['type'] != int:
-                    raise CLIArgError(str(function)+': count action expected type int')
-                if arg_ins.kwa['action'] == 'count' and 'type' in arg_ins.kwa:
+                # this means it's a count
+                if arg_ins.kwa['action'] == 'count':
+                    if 'type' not in arg_ins.kwa or arg_ins.kwa['type'] != int:
+                        raise CLIArgError(str(function)+': count action expected type int')
                     arg_ins.kwa.pop('type')
 
             # append to list
@@ -519,6 +520,25 @@ class NumpyDocCLI():
 
         """
         self.program_parser.print_help()
+
+    def dispatch(self, args: _ap.Namespace):
+        """
+        Dispatch command line arguments to a the right function.
+
+        Parameters
+        ----------
+        args : _ap.Namespace
+            Output of :py:meth:`NumpyDocCLI.parse_args`.
+
+        Returns
+        -------
+        any
+            Output of dispatched function.
+
+        """
+        a = vars(args)
+        routine = a.pop('__routine__')
+        return routine(**a)
 
 
 cli = NumpyDocCLI()

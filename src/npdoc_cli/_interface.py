@@ -14,7 +14,7 @@ NARGS_TYPES: list
 import argparse as _ap
 import inspect as _inspect
 import typing as _typing
-from npdoc_cli.errors import CLIArgError
+from npdoc_cli._errors import CLIArgError
 from numpydoc.docscrape import FunctionDoc as _scrape
 
 
@@ -25,39 +25,32 @@ NARGS_TYPES = [
 ]
 
 
-class _FunctionInput():
-    """
-    Class for organizing function inputs.
-
-    Attributes
-    ----------
-    pa: list
-        List of positional arguments.
-    kwa:
-        Dictionairy of key-word arguments.
-    """
+class FunctionInput():
+    """Class for organizing function inputs."""
 
     def __init__(self):
+        """
+        Attributes
+        ----------
+        pa: list
+            Positional arguments for a function input.
+        kwa: dict
+            Keyworded arguments for a function input.
+
+        """
         self.pa = []
         self.kwa = {}
+
 
 
 class NumpyDocCommand():
     """
     Class for parsing function signatures/doc strings in argparse objects.
-
-    Attributes
-    ----------
-    obj: callable
-        Object to derive argparse object from.
-    fname: str
-        Name of function (obj.__name__)
-
     """
 
     def __init__(self, obj: callable):
         """
-        Initialize a a NumpyDocObject.
+        Initialize a :py:obj:`NumpyDocObject`.
 
         Parses a callable object's doc strings to generate
         settings for an argparse parser object.
@@ -66,6 +59,13 @@ class NumpyDocCommand():
         ----------
         obj : callable
             DESCRIPTION.
+
+        Attributes
+        ----------
+        obj: callable
+            Object to derive argparse object from.
+        fname: str
+            Name of function (obj.__name__)
 
         Returns
         -------
@@ -83,15 +83,7 @@ class NumpyDocCommand():
 
     @property
     def defaults(self) -> dict:
-        """
-        Get dictionairy of keyword arguments and their default value.
-
-        Returns
-        -------
-        dict
-            Keys are argumentnames, values are defaults.
-
-        """
+        """Dictionairy of keyword arguments and their default value"""
         func = self.obj
         signature = _inspect.signature(func)
         return {
@@ -102,15 +94,7 @@ class NumpyDocCommand():
 
     @property
     def types(self) -> dict:
-        """
-        Get dictionairy of arguments and types.
-
-        Returns
-        -------
-        dict
-            keys are argument names, values are argument type signature.
-
-        """
+        """Dictionairy of arguments and types."""
         func = self.obj
         signature = _inspect.signature(func)
         return {
@@ -122,7 +106,7 @@ class NumpyDocCommand():
             self,
             nargs: str = '+',
             replace_underscores: bool = True
-    ) -> _FunctionInput:
+    ) -> FunctionInput:
         """
         Scrape doc strings and functions signature.
 
@@ -147,16 +131,16 @@ class NumpyDocCommand():
 
         Returns
         -------
-        parser_ins : _FunctionInput
+        parser_ins : FunctionInput
             Inputs to be passed into argparse.ArgumentParser
-        arg_ins_ls : _FunctionInput
+        arg_ins_ls : FunctionInput
             Inputs to be passed into argparse.ArgumentParser.add_argument
 
         """
         function = self.obj
 
         # output
-        parser_ins = _FunctionInput()
+        parser_ins = FunctionInput()
         arg_ins_ls = []
 
         # scrape signature and doc strings
@@ -177,7 +161,7 @@ class NumpyDocCommand():
 
         used_flags = []
         for p in params:
-            arg_ins = _FunctionInput()
+            arg_ins = FunctionInput()
             # add command line name
             cli_name = p.name
             if replace_underscores:
@@ -232,20 +216,9 @@ class NumpyDocCommand():
         return parser_ins, arg_ins_ls
 
 
-class _NumpyDocCLI():
+class NumpyDocCLI():
     """
     Class for generating a CLI from numpy doc strings and type signatures.
-
-    Attributes
-    ----------
-    entry: NumpyDocCommand
-        Function that acts as entry point command, was wrapped by
-        _NumpyDocCLI.program.
-    commands: list[NumpyDocCommand]
-        List of functions that are commands for entry.
-    subcommands: dict[NumpyDocCommand]
-        Dictionairy of subcommands for each command.
-
     """
 
     def __init__(self):
@@ -255,6 +228,20 @@ class _NumpyDocCLI():
         self.program_parser = None
         self.subcommand_parsers = {}
         self.command_parsers = []
+        """
+        Attributes
+        ----------
+        entry: NumpyDocCommand
+            Function that acts as entry point command, was wrapped by
+            _NumpyDocCLI.program.
+        commands: list[NumpyDocCommand]
+            List of functions that are commands for entry.
+        subcommands: dict[NumpyDocCommand]
+            Dictionairy of subcommands for each command.
+        program_parser: `argparse.ArgumentParser`
+            Parser for program entry point.
+
+        """
 
     def reset(self):
         """
@@ -349,7 +336,7 @@ class _NumpyDocCLI():
                 print(' '*7, '>', s)
         print('----------------')
 
-    def build_subparser(
+    def _build_subparser(
             self,
             npdoc_command: NumpyDocCommand,
             parent_subparsers: _ap.ArgumentParser,
@@ -361,7 +348,7 @@ class _NumpyDocCLI():
         ----------
         npdoc_command : NumpyDocCommand
             Command to build.
-        parent_subparsers : _ap.ArgumentParser
+        parent_subparsers : ArgumentParser
             subparsers object to add the newly created parser to. If NONE, will
             be created as a new program entry point.
         scrape_settings : dict
@@ -369,7 +356,7 @@ class _NumpyDocCLI():
 
         Returns
         -------
-        argparse.ArgumentParser
+        ArgumentParser
             Parser object with settings defined by npdoc_command.
 
         """
@@ -424,7 +411,7 @@ class _NumpyDocCLI():
             replace_underscores=replace_underscores
         )
 
-        program = self.build_subparser(
+        program = self._build_subparser(
             self.entry,
             None,
             scrape_sets
@@ -442,7 +429,7 @@ class _NumpyDocCLI():
 
             for c in self.commands:
                 # add sparser for program
-                cparser = self.build_subparser(
+                cparser = self._build_subparser(
                     c,
                     program_subparsers,
                     scrape_sets)
@@ -463,7 +450,7 @@ class _NumpyDocCLI():
 
                     # build parser for each subcommand
                     for s in subs:
-                        sc = self.build_subparser(
+                        sc = self._build_subparser(
                             s,
                             command_subparsers,
                             scrape_sets)
@@ -504,4 +491,7 @@ class _NumpyDocCLI():
         self.program_parser.print_help()
 
 
-cli = _NumpyDocCLI()
+cli = NumpyDocCLI()
+"""
+Instance of `NumpyDocCLI` for generating CLI's.
+"""

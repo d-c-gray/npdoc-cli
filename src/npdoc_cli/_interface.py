@@ -86,6 +86,14 @@ class NumpyDocCommand():
             for k, v in signature.parameters.items()
         }
 
+    def disp(self):
+        """Print scraped settings for debugging."""
+        a,b = self.scrape()
+        a.disp()
+        for bi in b:
+            print('')
+            bi.disp()
+
     def scrape(
             self,
             replace_underscores: bool = True
@@ -101,6 +109,7 @@ class NumpyDocCommand():
         replace_underscores : bool, optional
             Replace underscores in argument/function names with
             dashes, stylistic choice. The default is True.
+
 
         Raises
         ------
@@ -206,9 +215,38 @@ class NumpyDocCommand():
                         arg_ins.kwa['type'](c) for c in choices
                         ]
 
+            # look for additional arguments CLI argument settings
+            # expecting a line in description of argument that looks like
+            # For CLI argument key = value, key2 = value.
+            cli_line = [line for line in p.desc if 'For CLI argument ' in line]
+            if cli_line:
+                cli_line = cli_line[0]
+                if cli_line[-1] != '.':
+                    raise CLIArgError('Expected period at end of For ClI argument ' + str(function))
+                cli_line = cli_line.replace('For CLI argument ','')[0:-1]
+                cli_line = cli_line.split(', ')
+                for setting in cli_line:
+                    pair = setting.split(' = ')
+                    if len(pair) != 2:
+                        raise CLIArgError(
+                            str(function) + ' CLI settings in argument doc should be csv of key = value spaces matter.'
+                            )
+                    arg_ins.kwa[pair[0]] = pair[1]
+
+
             # help
             arg_ins.kwa['help'] = ''.join(p.desc)
-            # arg_ins.kwa['help']+=str(ptype)
+
+            # handle special cases where things populated that shouldn't be
+            # passed to the parser
+
+            # count actions shouldn't pass there type
+            if 'action' in arg_ins.kwa:
+                if arg_ins.kwa['type'] != int:
+                    raise CLIArgError(str(function)+': count action expected type int')
+                if arg_ins.kwa['action'] == 'count' and 'type' in arg_ins.kwa:
+                    arg_ins.kwa.pop('type')
+
             # append to list
             arg_ins_ls.append(arg_ins)
 

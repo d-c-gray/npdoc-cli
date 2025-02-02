@@ -7,6 +7,30 @@ Created on Sat Feb  1 12:05:26 2025
 from pathlib import Path as Path
 from npdoc_cli import cli, NumpyDocCommand
 
+def test_actions():
+    cli.reset()
+    @cli.program
+    def test(count: int = 0):
+        """
+        thing
+
+        Parameters
+        ----------
+        count : int, optional
+            Description
+            For CLI argument action = count.
+
+        Returns
+        -------
+        None.
+
+        """
+    doc = NumpyDocCommand(test)
+    cli.build()
+    a = cli.parse_args(['-ccc'])
+    assert a.count == 3
+    
+
 def test_cli_requires():
     cli.reset()
     @cli.program
@@ -61,10 +85,7 @@ def test_choices():
     cli.build()
     # cli.print_help()
     npd = NumpyDocCommand(test)
-    a,b = npd.scrape()
-    # a.disp()
-    for bi in b:
-        bi.disp()
+    npd.disp()
     args = cli.parse_args([])
     assert args.opt == 1.0
     
@@ -134,5 +155,4 @@ def test_base_types():
     
 
 if __name__ == '__main__':
-    test_nargs()
-    test_choices()
+    test_actions()

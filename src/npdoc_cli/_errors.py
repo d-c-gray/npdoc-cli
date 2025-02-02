@@ -6,4 +6,5 @@ Created on Sat Feb  1 12:30:27 2025
 """
 
 class CLIArgError(Exception):
+    """Error caused by invalid doc strings."""
     pass

@@ -84,5 +84,6 @@ def test_commands_only():
     cli.build()
     args = cli.parse_args(['comm','file/path'])
     assert args.file == 'file/path'
+
 if __name__ == '__main__':
     test_commands_only()

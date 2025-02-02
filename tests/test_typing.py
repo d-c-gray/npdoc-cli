@@ -5,7 +5,74 @@ Created on Sat Feb  1 12:05:26 2025
 @author: coleg
 """
 from pathlib import Path as Path
-from npdoc_cli import cli
+from npdoc_cli import cli, NumpyDocCommand
+
+def test_cli_requires():
+    cli.reset()
+    @cli.program
+    def test(arg: int = 0):
+        """
+        thing
+
+        Parameters
+        ----------
+        arg : int, optional, cli required
+            DESCRIPTION. The default is 0.
+
+        Returns
+        -------
+        None.
+
+        """
+    cli.build()
+    cli.parse_args(['-a','0'])
+
+def test_nargs():
+    cli.reset()
+    @cli.program
+    def test(ls: list[int]):
+        """
+        Thing.
+
+        Parameters
+        ----------
+        ls : list[int]
+            DESCRIPTION. The default is 0.
+
+        """
+    cli.build()
+    args = cli.parse_args(['1','2','3'])
+    expected = [1,2,3]
+    assert all([e == a for a,e in zip(args.ls,expected)])
+
+def test_choices():
+    cli.reset()
+    @cli.program
+    def test(opt: float = 1.0):
+        """
+        Thing.
+
+        Parameters
+        ----------
+        opt : {1.0, 2.0, 3.0}
+            1.0, 2.0, or 3.0. The default is 0.
+
+        """
+    cli.build()
+    # cli.print_help()
+    npd = NumpyDocCommand(test)
+    a,b = npd.scrape()
+    # a.disp()
+    for bi in b:
+        bi.disp()
+    args = cli.parse_args([])
+    assert args.opt == 1.0
+    
+    args = cli.parse_args(['-o','3.0'])
+    assert args.opt == 3.0
+
+    args = cli.parse_args(['-o','2.0'])
+    assert args.opt == 2.0
 
 def test_base_types():
     cli.reset()
@@ -67,4 +134,5 @@ def test_base_types():
     
 
 if __name__ == '__main__':
-    test_base_types()
+    test_nargs()
+    test_choices()

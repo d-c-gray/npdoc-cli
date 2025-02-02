@@ -1,46 +1,28 @@
 """
 Interface module for npdoc-cli.
-
-Attributes
-----------
-cli: _NumpyDocCLI
-    Class instance accessed for generating and defining the CLI from numpy
-    doc strings.
-NARGS_TYPES: list
-    Types in this list are, when found in function signatures, assigned
-    the nargs setting when calling argparse.ArgumentParser.add_argument.
-
 """
 import argparse as _ap
 import inspect as _inspect
 import typing as _typing
+import re as _re
 from npdoc_cli._errors import CLIArgError
 from numpydoc.docscrape import FunctionDoc as _scrape
-
-
-NARGS_TYPES = [
-    list,
-    tuple,
-    _typing.Tuple,
-]
-
 
 class FunctionInput():
     """Class for organizing function inputs."""
 
     def __init__(self):
-        """
-        Attributes
-        ----------
-        pa: list
-            Positional arguments for a function input.
-        kwa: dict
-            Keyworded arguments for a function input.
-
-        """
         self.pa = []
+        """List of positional arguments for a function input."""
         self.kwa = {}
-
+        """Dictionairy of keyword arguments for a function input."""
+    def disp(self):
+        print('args')
+        for a in self.pa:
+            print('   ',a)
+        print('kwargs')
+        for k,v in self.kwa.items():
+            print(k,' : ', v)
 
 
 class NumpyDocCommand():
@@ -50,7 +32,7 @@ class NumpyDocCommand():
 
     def __init__(self, obj: callable):
         """
-        Initialize a :py:obj:`NumpyDocObject`.
+        Initialize a :NumpyDocObject.
 
         Parses a callable object's doc strings to generate
         settings for an argparse parser object.
@@ -58,7 +40,7 @@ class NumpyDocCommand():
         Parameters
         ----------
         obj : callable
-            DESCRIPTION.
+            Function or class definition being defined as a commmand.
 
         Attributes
         ----------
@@ -73,7 +55,9 @@ class NumpyDocCommand():
 
         """
         self.obj = obj
+        """Object called to and called during cli dispatch."""
         self.fname = obj.__name__
+        """Name of ``obj``."""
 
     def __repr__(self):
         return 'NumpDocCommand:'+str(self.obj.__qualname__)
@@ -104,7 +88,6 @@ class NumpyDocCommand():
 
     def scrape(
             self,
-            nargs: str = '+',
             replace_underscores: bool = True
     ) -> FunctionInput:
         """
@@ -115,11 +98,6 @@ class NumpyDocCommand():
 
         Parameters
         ----------
-        nargs : str, optional
-            How to handle multiple arguments. Type signatures in
-            See nargs in npdoc_cli.NARG_TYPES are given this setting.
-            See argparse documentation on nargs for more info.
-            The default is '+'.
         replace_underscores : bool, optional
             Replace underscores in argument/function names with
             dashes, stylistic choice. The default is True.
@@ -131,9 +109,9 @@ class NumpyDocCommand():
 
         Returns
         -------
-        parser_ins : FunctionInput
+        parser_ins : :py:obj:`FunctionInput`
             Inputs to be passed into argparse.ArgumentParser
-        arg_ins_ls : FunctionInput
+        arg_ins_ls : :py:obj:`FunctionInput`
             Inputs to be passed into argparse.ArgumentParser.add_argument
 
         """
@@ -162,6 +140,7 @@ class NumpyDocCommand():
         used_flags = []
         for p in params:
             arg_ins = FunctionInput()
+
             # add command line name
             cli_name = p.name
             if replace_underscores:
@@ -184,9 +163,16 @@ class NumpyDocCommand():
                 arg_ins.pa.append('--' + cli_name)
 
                 # flag as a required key word argument or not
+                arg_ins.kwa['default'] = defaults[p.name]
                 arg_ins.kwa['required'] = 'cli required' in p.type
 
             # bool flags require a default
+            # check for matching names
+            try:
+                types[p.name]
+            except KeyError:
+                raise CLIArgError('signature doesnt match doc string. ' + str(function))
+
             if 'bool' in p.type:
                 try:
                     default = defaults[p.name]
@@ -198,18 +184,31 @@ class NumpyDocCommand():
                 if default:
                     arg_ins.kwa['action'] = 'store_false'
 
-            # handle typing on non-bool things
+            # handle typing, choices on non-bool things
             else:
+                # handle nargs and type assignment
                 ptype = types[p.name]
-                arg_ins.kwa['type'] = ptype
-
-                # inspect for typings with 'nargs'
-                if any([str(n) in str(ptype) for n in NARGS_TYPES]):
+                if list == _typing.get_origin(ptype):
                     arg_ins.kwa['nargs'] = '+'
+                    type_args = _typing.get_args(ptype)
+                    arg_ins.kwa['type'] = type_args[0]
+                # not a special type of input, pass as given
+                else:
+                    arg_ins.kwa['type'] = ptype
+                
+                # look for choices option
+                # expecting {a, b, c}
+                choices = _re.search(r'\{(.*?)\}', p.type)
+                if choices is not None:
+                    choices = choices.group(0).replace('{','').replace('}','')
+                    choices = choices.split(', ')
+                    arg_ins.kwa['choices'] = [
+                        arg_ins.kwa['type'](c) for c in choices
+                        ]
 
             # help
             arg_ins.kwa['help'] = ''.join(p.desc)
-
+            # arg_ins.kwa['help']+=str(ptype)
             # append to list
             arg_ins_ls.append(arg_ins)
 
@@ -223,25 +222,18 @@ class NumpyDocCLI():
 
     def __init__(self):
         self.entry = None
+        """:py:obj:`NumpyDocCommand` of program entry point."""
         self.commands = []
+        """List of :py:obj:`NumpyDocCommand` for program commands."""
         self.subcommands = {}
+        """Dictionairy of :py:obj:`NumpyDocCommand` for each subcommands."""
         self.program_parser = None
-        self.subcommand_parsers = {}
+        """ArgumentParser for program entry point."""
         self.command_parsers = []
-        """
-        Attributes
-        ----------
-        entry: NumpyDocCommand
-            Function that acts as entry point command, was wrapped by
-            _NumpyDocCLI.program.
-        commands: list[NumpyDocCommand]
-            List of functions that are commands for entry.
-        subcommands: dict[NumpyDocCommand]
-            Dictionairy of subcommands for each command.
-        program_parser: `argparse.ArgumentParser`
-            Parser for program entry point.
+        """ArgumentParser for each command."""
+        self.subcommand_parsers = {}
+        """ArgumentParser for each subcommand"""
 
-        """
 
     def reset(self):
         """
@@ -346,18 +338,18 @@ class NumpyDocCLI():
 
         Parameters
         ----------
-        npdoc_command : NumpyDocCommand
+        npdoc_command : :py:obj`NumpyDocCommand`.
             Command to build.
         parent_subparsers : ArgumentParser
-            subparsers object to add the newly created parser to. If NONE, will
+            Subparsers object to add the newly created parser to. If NONE, will
             be created as a new program entry point.
         scrape_settings : dict
-            Additional settings to pass to NumpyDocCommand.scrape.
+            Additional settings to pass to :py:obj`NumpyDocCommand`.scrape.
 
         Returns
         -------
         ArgumentParser
-            Parser object with settings defined by npdoc_command.
+            Parser object with settings defined by ``npdoc_command``.
 
         """
 
@@ -493,5 +485,5 @@ class NumpyDocCLI():
 
 cli = NumpyDocCLI()
 """
-Instance of `NumpyDocCLI` for generating CLI's.
+Instance of :py:obj:`NumpyDocCLI` for generating CLI's.
 """

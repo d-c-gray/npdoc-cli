@@ -13,7 +13,7 @@ jobs:
       - uses: actions/setup-python@v5
       - name: Install dependencies
         run: |
-          pip install numpydocs
+          pip install numpydoc
           pip install -e .
           pip install matplotlib
           pip install sphinx-autoapi==3.4.0

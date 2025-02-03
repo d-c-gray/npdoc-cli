@@ -25,12 +25,18 @@ Which produces a help message:
 .. literalinclude :: ../../tests/snippet_intro_out.txt
    :language: console
 
+Command line arguments can be parsed and dispatched to the right function by:
+
+.. code-block:: python
+
+    args = cli.parse_args()
+    cli.dispatch(args)
+
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
 
    auto_examples/index.rst
-
 
 
 Indices and tables

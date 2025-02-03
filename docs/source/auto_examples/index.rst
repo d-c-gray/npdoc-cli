@@ -80,6 +80,23 @@ Below is list of (ordered) tutorials on how to use the module.
     </div>
 
 
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This module explains how naming rules can be applied to a CLI.">
+
+.. only:: html
+
+  .. image:: /auto_examples/images/thumb/sphx_glr_plot_e05_naming_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_auto_examples_plot_e05_naming.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Naming</div>
+    </div>
+
+
 .. thumbnail-parent-div-close
 
 .. raw:: html
@@ -94,6 +111,7 @@ Below is list of (ordered) tutorials on how to use the module.
    /auto_examples/plot_e02_typing
    /auto_examples/plot_e03_docstrings
    /auto_examples/plot_e04_commands_subcommands
+   /auto_examples/plot_e05_naming
 
 
 .. only:: html

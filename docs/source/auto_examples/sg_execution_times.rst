@@ -6,7 +6,7 @@
 
 Computation times
 =================
-**00:00.027** total execution time for 4 files **from auto_examples**:
+**00:00.031** total execution time for 5 files **from auto_examples**:
 
 .. container::
 
@@ -39,8 +39,11 @@ Computation times
      - 00:00.008
      - 0.0
    * - :ref:`sphx_glr_auto_examples_plot_e02_typing.py` (``plot_e02_typing.py``)
-     - 00:00.006
+     - 00:00.007
+     - 0.0
+   * - :ref:`sphx_glr_auto_examples_plot_e05_naming.py` (``plot_e05_naming.py``)
+     - 00:00.004
      - 0.0
    * - :ref:`sphx_glr_auto_examples_plot_e03_docstrings.py` (``plot_e03_docstrings.py``)
-     - 00:00.004
+     - 00:00.003
      - 0.0

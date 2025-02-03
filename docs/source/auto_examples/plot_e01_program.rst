@@ -154,7 +154,7 @@ accessed and called manually if desired.
 
  .. code-block:: none
 
-    <function hello at 0x0000017C0D7C4400>
+    <function hello at 0x000001E1BD5C4400>
     hello reader
 
 

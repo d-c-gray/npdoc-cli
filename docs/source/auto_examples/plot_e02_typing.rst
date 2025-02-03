@@ -337,7 +337,7 @@ set to ``action = 'extend'`` and ``nargs = '+'``.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.007 seconds)
+   **Total running time of the script:** (0 minutes 0.011 seconds)
 
 
 .. _sphx_glr_download_auto_examples_plot_e02_typing.py:

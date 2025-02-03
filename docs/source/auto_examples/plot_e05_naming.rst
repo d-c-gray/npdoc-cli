@@ -112,19 +112,20 @@ subcommand and argument names. You can turn this off in the build call.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 42-51
+.. GENERATED FROM PYTHON SOURCE LINES 42-52
 
 Short Flags
 -----------
-All positional arguments are assigned a short flag and a long flag. Long
-flags will always be the arguments name as it exists in python + whatever
+All keyword arguments are assigned a short flag and a long flag as
+optional arguments in the CLI. Long
+flags will always be the python arguments name as it exists in python + whatever
 naming rules are applied to the build call. However, the short flag will
 use the first letter of the argument's name. If another argument exists with
 that flag, it will keep adding letters until a unique short flag is created.
 In that respect, the order of arguments in the function signature will
 determine the short flag if arguments have similar names.
 
-.. GENERATED FROM PYTHON SOURCE LINES 51-69
+.. GENERATED FROM PYTHON SOURCE LINES 52-70
 
 .. code-block:: Python
 
@@ -171,7 +172,7 @@ determine the short flag if arguments have similar names.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.004 seconds)
+   **Total running time of the script:** (0 minutes 0.009 seconds)
 
 
 .. _sphx_glr_download_auto_examples_plot_e05_naming.py:

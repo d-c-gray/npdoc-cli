@@ -41,8 +41,9 @@ cli.print_help()
 # %%
 # Short Flags
 # -----------
-# All positional arguments are assigned a short flag and a long flag. Long
-# flags will always be the arguments name as it exists in python + whatever
+# All keyword arguments are assigned a short flag and a long flag as
+# optional arguments in the CLI. Long
+# flags will always be the python arguments name as it exists in python + whatever
 # naming rules are applied to the build call. However, the short flag will
 # use the first letter of the argument's name. If another argument exists with
 # that flag, it will keep adding letters until a unique short flag is created.

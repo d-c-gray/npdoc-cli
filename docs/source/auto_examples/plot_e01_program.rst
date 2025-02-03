@@ -154,7 +154,7 @@ accessed and called manually if desired.
 
  .. code-block:: none
 
-    <function hello at 0x000001E1BD5C4400>
+    <function hello at 0x0000027E63BE4400>
     hello reader
 
 
@@ -163,7 +163,7 @@ accessed and called manually if desired.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.008 seconds)
+   **Total running time of the script:** (0 minutes 0.012 seconds)
 
 
 .. _sphx_glr_download_auto_examples_plot_e01_program.py:

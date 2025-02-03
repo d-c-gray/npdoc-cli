@@ -98,7 +98,7 @@ parsed and converted into a command line interface.
 Dispatching to Functions
 ------------------------
 Calling ``cli.parse_args()`` will parse any command line arguments
-into an argparse NameSpace. Passing that through
+into an |argparse namespace|_. Passing that through
 ``cli.dispatch()`` will route the arguments to the correct function.
 
 Normally, we would call ``cli.parse_args()`` as empty to get the
@@ -154,7 +154,7 @@ accessed and called manually if desired.
 
  .. code-block:: none
 
-    <function hello at 0x00000170B206CE00>
+    <function hello at 0x0000017C0D7C4400>
     hello reader
 
 

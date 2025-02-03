@@ -32,28 +32,26 @@ def test_actions():
     
 
 def test_cli_requires():
-    cli.reset()
-    @cli.program
     def test(arg: int = 0):
         """
         thing
 
         Parameters
         ----------
-        arg : int, optional, cli required
-            DESCRIPTION. The default is 0.
+        arg : int, optional
+            For CLI argument required = True.
 
         Returns
         -------
         None.
 
         """
+        pass
     cli.build()
-    cli.parse_args(['-a','0'])
+    p,args = NumpyDocCommand(test).scrape()
+    assert args[0].kwa['required'] == True
 
 def test_nargs():
-    cli.reset()
-    @cli.program
     def test(ls: list[int]):
         """
         Thing.
@@ -62,12 +60,12 @@ def test_nargs():
         ----------
         ls : list[int]
             DESCRIPTION. The default is 0.
+            For CLI argument nargs = *.
 
         """
     cli.build()
-    args = cli.parse_args(['1','2','3'])
-    expected = [1,2,3]
-    assert all([e == a for a,e in zip(args.ls,expected)])
+    p,args = NumpyDocCommand(test).scrape()
+    assert args[0].kwa['nargs'] == '*'
 
 def test_choices():
     cli.reset()

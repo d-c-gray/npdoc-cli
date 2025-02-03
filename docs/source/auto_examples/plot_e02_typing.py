@@ -13,7 +13,7 @@ from npdoc_cli import cli
 # %%
 # Type Signatures
 # ---------------
-# Arguments given to the command line are cast into the provided typ
+# Arguments given to the command line are cast into the provided type
 # signature.
 
 
@@ -153,8 +153,8 @@ cli.print_help()
 # Adding the ``list[type]`` to a function signature will
 # tell the parser that function is to take multiple arguments.
 # Each argument will be cast into the type enclosed in ``list[]``.
-# By default, arguments with this signature will have the argparse
-# argument set to ``action = 'extend'`` and ``nargs = '+'``.
+# By default, arguments with this signature will have the |argparse argument|_
+# set to ``action = 'extend'`` and ``nargs = '+'``.
 
 cli.reset()
 @cli.program

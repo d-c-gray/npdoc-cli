@@ -1,29 +1,20 @@
 {
+ "NumpyDocCLI": [
+  {
+   "is_class": false,
+   "is_explicit": true,
+   "module": "builtins",
+   "module_short": "builtins",
+   "name": "NumpyDocCLI"
+  }
+ ],
  "args": [
   {
    "is_class": false,
    "is_explicit": false,
-   "module": "builtins",
-   "module_short": "builtins",
-   "name": "dict"
-  }
- ],
- "args.__routine__": [
-  {
-   "is_class": false,
-   "is_explicit": false,
-   "module": "builtins",
-   "module_short": "builtins",
-   "name": "dict"
-  }
- ],
- "args.pop": [
-  {
-   "is_class": false,
-   "is_explicit": false,
-   "module": "builtins",
-   "module_short": "builtins",
-   "name": "builtin_function_or_method"
+   "module": "argparse",
+   "module_short": "argparse",
+   "name": "Namespace"
   }
  ],
  "cli.build": [
@@ -47,6 +38,29 @@
    "module": "npdoc_cli.cli",
    "module_short": "npdoc_cli.cli",
    "name": "build"
+  }
+ ],
+ "cli.command": [
+  {
+   "is_class": false,
+   "is_explicit": false,
+   "module": "npdoc_cli._interface",
+   "module_short": "npdoc_cli",
+   "name": "NumpyDocCLI.command"
+  },
+  {
+   "is_class": false,
+   "is_explicit": false,
+   "module": "npdoc_cli",
+   "module_short": "npdoc_cli",
+   "name": "NumpyDocCLI.command"
+  },
+  {
+   "is_class": false,
+   "is_explicit": false,
+   "module": "npdoc_cli.cli",
+   "module_short": "npdoc_cli.cli",
+   "name": "command"
   }
  ],
  "cli.dispatch": [
@@ -141,22 +155,68 @@
    "name": "program"
   }
  ],
- "func": [
+ "cli.reset": [
   {
    "is_class": false,
    "is_explicit": false,
-   "module": "builtins",
-   "module_short": "builtins",
-   "name": "function"
-  }
- ],
- "npdoc_cli.NumpyDocCLI": [
+   "module": "npdoc_cli._interface",
+   "module_short": "npdoc_cli",
+   "name": "NumpyDocCLI.reset"
+  },
   {
    "is_class": false,
-   "is_explicit": true,
+   "is_explicit": false,
    "module": "npdoc_cli",
    "module_short": "npdoc_cli",
-   "name": "NumpyDocCLI"
+   "name": "NumpyDocCLI.reset"
+  },
+  {
+   "is_class": false,
+   "is_explicit": false,
+   "module": "npdoc_cli.cli",
+   "module_short": "npdoc_cli.cli",
+   "name": "reset"
+  }
+ ],
+ "cli.subcommand": [
+  {
+   "is_class": false,
+   "is_explicit": false,
+   "module": "npdoc_cli._interface",
+   "module_short": "npdoc_cli",
+   "name": "NumpyDocCLI.subcommand"
+  },
+  {
+   "is_class": false,
+   "is_explicit": false,
+   "module": "npdoc_cli",
+   "module_short": "npdoc_cli",
+   "name": "NumpyDocCLI.subcommand"
+  },
+  {
+   "is_class": false,
+   "is_explicit": false,
+   "module": "npdoc_cli.cli",
+   "module_short": "npdoc_cli.cli",
+   "name": "subcommand"
+  }
+ ],
+ "s": [
+  {
+   "is_class": false,
+   "is_explicit": false,
+   "module": "__main__",
+   "module_short": "__main__",
+   "name": "say"
+  }
+ ],
+ "say": [
+  {
+   "is_class": true,
+   "is_explicit": false,
+   "module": "__main__",
+   "module_short": "__main__",
+   "name": "say"
   }
  ]
 }

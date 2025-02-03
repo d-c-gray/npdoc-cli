@@ -21,12 +21,13 @@
 Doc Strings
 ===========
 In addition to parsing function signatures, the module assumes
-that your functions are documenting using numpy style doc strings.
+that your functions are documented with doc strings according to  the
+|numpy style guide|_.
 
 This tutorial goes over how to use the doc-strings to further customize
 your CLI.
 
-.. GENERATED FROM PYTHON SOURCE LINES 10-13
+.. GENERATED FROM PYTHON SOURCE LINES 11-14
 
 .. code-block:: Python
 
@@ -40,7 +41,7 @@ your CLI.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 14-19
+.. GENERATED FROM PYTHON SOURCE LINES 15-20
 
 Summary
 -------
@@ -48,7 +49,7 @@ The ``Summary`` and  ``Extended Summary`` of the doc string are converted into t
 help message of your parser. The descriptions in the ``Parameters`` section
 are converted into the help message for each argument
 
-.. GENERATED FROM PYTHON SOURCE LINES 19-40
+.. GENERATED FROM PYTHON SOURCE LINES 20-41
 
 .. code-block:: Python
 
@@ -94,7 +95,7 @@ are converted into the help message for each argument
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 41-47
+.. GENERATED FROM PYTHON SOURCE LINES 42-52
 
 Choices
 -------
@@ -103,7 +104,11 @@ You can include those in the ``Parameters`` section, and they will be
 added to the parser, which will check that a valid choice was passed
 as a command line argument.
 
-.. GENERATED FROM PYTHON SOURCE LINES 47-65
+To do this, add a curly braces next to the doc strings type indication
+formatted as ``{val2, val2, ...}`` where the first value is the default.
+Each item in the choices will be cast into the type in the signature.
+
+.. GENERATED FROM PYTHON SOURCE LINES 52-70
 
 .. code-block:: Python
 
@@ -140,21 +145,23 @@ as a command line argument.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 66-77
+.. GENERATED FROM PYTHON SOURCE LINES 71-84
 
 Action, Nargs, and Required
 ---------------------------
-For the ``argparse.ArgumentParser.add_argument`` method, some settings
-don't fit nicely into the signature or numpydoc style guid. For those,
-you can include them in the argument description.
+Underhood the hood, the module is generating an |argparse argument|_ and
+some settings
+don't fit nicely into the signature or |numpy style guide|_. For those,
+you can include them in the descriptions of the argument in the ``Parameters``
+section.
 
 These settings should be formatted as: 
-``For CLI parser key = <val>...`` and ended with a period. The spaces and
+``For CLI argument key = <val>, ...`` and ended with a period. The spaces and
 period are important and must be included properly on a single line.
 
 This line will not be included in the help message of the generated CLI.
 
-.. GENERATED FROM PYTHON SOURCE LINES 77-92
+.. GENERATED FROM PYTHON SOURCE LINES 84-99
 
 .. code-block:: Python
 
@@ -167,7 +174,7 @@ This line will not be included in the help message of the generated CLI.
         ----------
         mylist : list[str]
             This function expects some strings.
-            For CLI parser required = True, action = append, nargs = *.
+            For CLI argument required = True, action = append, nargs = *.
         """
         print(mylist)
 
@@ -181,12 +188,12 @@ This line will not be included in the help message of the generated CLI.
 
  .. code-block:: none
 
-    usage: options [-h] [-m MYLIST [MYLIST ...]]
+    usage: options [-h] -m [MYLIST ...]
 
     options:
       -h, --help            show this help message and exit
-      -m MYLIST [MYLIST ...], --mylist MYLIST [MYLIST ...]
-                            This function expects some strings.For CLI parser required = True, action = append, nargs = *.
+      -m [MYLIST ...], --mylist [MYLIST ...]
+                            This function expects some strings.
 
 
 
@@ -194,7 +201,7 @@ This line will not be included in the help message of the generated CLI.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.009 seconds)
+   **Total running time of the script:** (0 minutes 0.004 seconds)
 
 
 .. _sphx_glr_download_auto_examples_plot_e03_docstrings.py:

@@ -2,7 +2,8 @@
 Doc Strings
 ===========
 In addition to parsing function signatures, the module assumes
-that your functions are documenting using numpy style doc strings.
+that your functions are documented with doc strings according to  the
+|numpy style guide|_.
 
 This tutorial goes over how to use the doc-strings to further customize
 your CLI.
@@ -44,6 +45,10 @@ cli.print_help()
 # You can include those in the ``Parameters`` section, and they will be 
 # added to the parser, which will check that a valid choice was passed
 # as a command line argument.
+#
+# To do this, add a curly braces next to the doc strings type indication
+# formatted as ``{val2, val2, ...}`` where the first value is the default.
+# Each item in the choices will be cast into the type in the signature.
 
 cli.reset()
 @cli.program
@@ -65,12 +70,14 @@ except SystemExit as e:
 # %%
 # Action, Nargs, and Required
 # ---------------------------
-# For the ``argparse.ArgumentParser.add_argument`` method, some settings
-# don't fit nicely into the signature or numpydoc style guid. For those,
-# you can include them in the argument description.
+# Underhood the hood, the module is generating an |argparse argument|_ and
+# some settings
+# don't fit nicely into the signature or |numpy style guide|_. For those,
+# you can include them in the descriptions of the argument in the ``Parameters``
+# section.
 #
 # These settings should be formatted as: 
-# ``For CLI parser key = <val>...`` and ended with a period. The spaces and
+# ``For CLI argument key = <val>, ...`` and ended with a period. The spaces and
 # period are important and must be included properly on a single line.
 #
 # This line will not be included in the help message of the generated CLI.
@@ -83,7 +90,7 @@ def options(mylist: list[str] = []):
     ----------
     mylist : list[str]
         This function expects some strings.
-        For CLI parser required = True, action = append, nargs = *.
+        For CLI argument required = True, action = append, nargs = *.
     """
     print(mylist)
 

@@ -1,0 +1,6 @@
+this folder is run by pytest tests,
+test_snippet* files are used
+to generate text files for use in the documentation
+that are regenerated on pytest calls. They are not
+counted as 'test' files in the pytest module but
+are still run.

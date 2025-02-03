@@ -44,7 +44,7 @@ affect the command line interface.
 
 Type Signatures
 ---------------
-Arguments given to the command line are cast into the provided typ
+Arguments given to the command line are cast into the provided type
 signature.
 
 .. GENERATED FROM PYTHON SOURCE LINES 18-40
@@ -293,8 +293,8 @@ Lists
 Adding the ``list[type]`` to a function signature will
 tell the parser that function is to take multiple arguments.
 Each argument will be cast into the type enclosed in ``list[]``.
-By default, arguments with this signature will have the argparse
-argument set to ``action = 'extend'`` and ``nargs = '+'``.
+By default, arguments with this signature will have the |argparse argument|_
+set to ``action = 'extend'`` and ``nargs = '+'``.
 
 .. GENERATED FROM PYTHON SOURCE LINES 158-173
 
@@ -337,7 +337,7 @@ argument set to ``action = 'extend'`` and ``nargs = '+'``.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.012 seconds)
+   **Total running time of the script:** (0 minutes 0.006 seconds)
 
 
 .. _sphx_glr_download_auto_examples_plot_e02_typing.py:

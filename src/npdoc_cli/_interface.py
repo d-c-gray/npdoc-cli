@@ -69,7 +69,10 @@ class NumpyDocCommand():
     def defaults(self) -> dict:
         """Dictionairy of keyword arguments and their default value"""
         func = self.obj
+        if type(func) == classmethod:
+            raise CLIArgError('class methods not currently supported : ' + func.__qualname__)
         signature = _inspect.signature(func)
+
         return {
             k: v.default
             for k, v in signature.parameters.items()
@@ -220,18 +223,36 @@ class NumpyDocCommand():
             # For CLI argument key = value, key2 = value.
             cli_line = [line for line in p.desc if 'For CLI argument ' in line]
             if cli_line:
+                p.desc.remove(cli_line[0])
                 cli_line = cli_line[0]
                 if cli_line[-1] != '.':
                     raise CLIArgError('Expected period at end of For ClI argument ' + str(function))
                 cli_line = cli_line.replace('For CLI argument ','')[0:-1]
                 cli_line = cli_line.split(', ')
+                extras = {}
                 for setting in cli_line:
                     pair = setting.split(' = ')
                     if len(pair) != 2:
                         raise CLIArgError(
                             str(function) + ' CLI settings in argument doc should be csv of key = value spaces matter.'
                             )
-                    arg_ins.kwa[pair[0]] = pair[1]
+                    extras[pair[0]] = pair[1]
+                # check validity
+                valid = 'required', 'nargs', 'action'
+                if any([k not in valid for k in extras]):
+                    raise CLIArgError('Unexpected key in "For CLI argument" ' + str(function))
+
+                # convert required
+                if 'required' in extras:
+                    if extras['required'] == 'True':
+                        extras['required'] = True
+                    elif extras['required'] == 'False':
+                        extras['required'] = False
+                    else:
+                        raise CLIArgError('required should be True or False ' + str(function))
+
+                # add back to ouput
+                for k in extras: arg_ins.kwa[k] = extras[k]
 
 
             # help
@@ -371,7 +392,8 @@ class NumpyDocCLI():
             self,
             npdoc_command: NumpyDocCommand,
             parent_subparsers: _ap.ArgumentParser,
-            scrape_settings: dict):
+            scrape_settings: dict,
+            instance: object = None):
         """
         Build a argparse subparser.
 
@@ -384,6 +406,9 @@ class NumpyDocCLI():
             be created as a new program entry point.
         scrape_settings : dict
             Additional settings to pass to :py:obj`NumpyDocCommand`.scrape.
+        instance: object
+            If provided, will assign the class instance as the function to be
+            called instead of the class itself.
 
         Returns
         -------
@@ -404,7 +429,20 @@ class NumpyDocCLI():
                 prog=parser_ins.pa[0],
                 **parser_ins.kwa
             )
+        if instance is None:
             sparser.set_defaults(__routine__=npdoc_command.obj)
+        else:
+            # its a command, pass it the call method
+            if type(instance).__name__ == npdoc_command.fname:
+                # if no call method, just use None
+                try:
+                    fun = instance.__call__
+                except AttributeError:
+                    fun = None
+            # its a subcommmand, grab the instances method we want
+            else:
+                fun = getattr(instance,npdoc_command.fname)
+            sparser.set_defaults(__routine__=fun)
         for a in arg_ins:
             sparser.add_argument(
                 *a.pa,
@@ -416,7 +454,7 @@ class NumpyDocCLI():
     def build(self,
               *command_instances: object,
               replace_underscores: bool = True,
-              alphabetical: bool = True
+              sort: str = 'None'
               ):
         """
         Build a CLI.
@@ -430,8 +468,8 @@ class NumpyDocCLI():
         replace_underscores : bool, optional
             Repace underscores in argument/command names with dashes.
             The default is True.
-        alphabetical : bool, optional
-            Sort commands and subcommands alphabetically. The default is True.
+        sort : str, {None, alphabetical}
+            Sort commands and subcommands by key.
 
         Returns
         -------
@@ -453,17 +491,27 @@ class NumpyDocCLI():
 
         if self.commands:
             program_subparsers = program.add_subparsers(help='command help')
-            if alphabetical:
+            if sort == 'alphabetical':
                 cnames = [c.fname for c in self.commands]
                 self.commands = [c for _, _, c in sorted(
                     zip(cnames, cnames, self.commands))]
 
             for c in self.commands:
+                # check that this isn't an instance
+                inst = None
+                match = [i for i in command_instances if type(i).__name__ == c.fname]
+                if len(match) > 1:
+                    raise CLIArgError('Instances share same class name, cant resolve : ' + c.fname)
+                if match:
+                    inst = match[0]
+
+
                 # add sparser for program
                 cparser = self._build_subparser(
                     c,
                     program_subparsers,
-                    scrape_sets)
+                    scrape_sets,
+                    instance = inst)
 
                 subs = None
                 if c.fname in self.subcommands:
@@ -474,7 +522,7 @@ class NumpyDocCLI():
                     command_subparsers = cparser.add_subparsers(
                         help='subcommand help')
                     # sort if asked to
-                    if alphabetical:
+                    if sort == 'alphabetical':
                         cnames = [c.fname for c in subs]
                         subs = [c for _, _, c in sorted(
                             zip(cnames, cnames, subs))]
@@ -484,7 +532,8 @@ class NumpyDocCLI():
                         sc = self._build_subparser(
                             s,
                             command_subparsers,
-                            scrape_sets)
+                            scrape_sets,
+                            instance = inst)
                         subcommands[c].append(sc)
 
         self.program_parser = program

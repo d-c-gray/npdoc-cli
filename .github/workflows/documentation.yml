@@ -6,7 +6,7 @@ permissions:
   contents: write
 
 jobs:
-  test:
+  testdocs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -23,11 +23,6 @@ jobs:
       - name: Pytests
         run: |
           pytest tests
-  docs:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
       - name: Sphinx build
         run: |
           sphinx-build -M html docs/source/ docs/_build/

@@ -1,4 +1,4 @@
-name: documentation
+name: deployment
 
 on: [push, pull_request, workflow_dispatch]
 
@@ -6,7 +6,7 @@ permissions:
   contents: write
 
 jobs:
-  testdocs:
+  deploy:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -21,14 +21,16 @@ jobs:
           pip install sphinx-gallery==0.18.0
           pip install pytest
       - name: Pytests
+        if: success()
         run: |
           pytest tests
       - name: Sphinx build
+        if: success()
         run: |
           sphinx-build -M html docs/source/ docs/_build/
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
-        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
+        if: ${{ success() && github.event_name == 'push' && github.ref == 'refs/heads/main' }}
         with:
           publish_branch: gh-pages
           github_token: ${{ secrets.GITHUB_TOKEN }}

@@ -6,7 +6,7 @@ permissions:
   contents: write
 
 jobs:
-  docs:
+  test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -19,6 +19,15 @@ jobs:
           pip install sphinx-autoapi==3.4.0
           pip install sphinx-book-theme==1.1.3
           pip install sphinx-gallery==0.18.0
+          pip install pytest
+      - name: Pytests
+        run: |
+          pytest tests
+  docs:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
       - name: Sphinx build
         run: |
           sphinx-build -M html docs/source/ docs/_build/

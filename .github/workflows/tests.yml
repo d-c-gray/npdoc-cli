@@ -1,9 +1,10 @@
 name: deployment
 
 on:
-  push:
+  pull_request:
     branches:
-      - main
+      - '*'
+      - '!main'
 
 permissions:
   contents: write
@@ -31,11 +32,3 @@ jobs:
         if: success()
         run: |
           sphinx-build -M html docs/source/ docs/_build/
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
-        if: ${{ success() && github.event_name == 'push' && github.ref == 'refs/heads/main' }}
-        with:
-          publish_branch: gh-pages
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: docs/_build/html
-          force_orphan: true

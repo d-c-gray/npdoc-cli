@@ -2,9 +2,9 @@
 A tool build with [argparse](https://docs.python.org/3/library/argparse.html)
 that utilizes the [numpy style guide](https://numpydoc.readthedocs.io/en/latest/format.html)
 to generate a command line interface (CLI). Paired with auto-generated
-documentation with [sphinx](https://www.sphinx-doc.org/en/master/)
-a functions source code, documentation, and CLI can all be maintained with the
-same chunk of text.
+documentation with [sphinx](https://www.sphinx-doc.org/en/master/) you  can
+maintain a functions source code, documentation, andn CLI all with the same
+chunk of text.
 
 For example a simple CLI for a function can be made with:
 
@@ -39,4 +39,6 @@ positional arguments:
 
 optional arguments:
   -h, --help  show this help message and exit
-  ```
+```
+
+For more information, check out the [documentation](https://d-c-gray.github.io/npdoc-cli/).

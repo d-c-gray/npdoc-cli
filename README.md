@@ -45,6 +45,6 @@ Install with pip.
 
 ```console
 pip install npdoc-cli
-
+```
 
 For more information, check out the [documentation](https://d-c-gray.github.io/npdoc-cli/).

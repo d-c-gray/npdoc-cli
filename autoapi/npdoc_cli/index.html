@@ -1,0 +1,847 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>npdoc_cli &#8212; npdoc-cli 0.0.2 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css?v=d2d258e8" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-binder.css?v=f4aeca0c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../_static/documentation_options.js?v=f131489c"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'autoapi/npdoc_cli/index';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="prev" title="API Reference" href="../index.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">npdoc-cli 0.0.2 documentation</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../auto_examples/index.html">Tutorial</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../auto_examples/plot_e01_program.html">Creating a Program</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../auto_examples/plot_e02_typing.html">Function Signatures</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../auto_examples/plot_e03_docstrings.html">Doc Strings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../auto_examples/plot_e04_commands_subcommands.html">Commands and Subcommands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../auto_examples/plot_e05_naming.html">Naming</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../index.html">API Reference</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">npdoc_cli</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/autoapi/npdoc_cli/index.rst" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.rst</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>npdoc_cli</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#attributes">Attributes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exceptions">Exceptions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#classes">Classes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#package-contents">Package Contents</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#npdoc_cli.CLIArgError"><code class="docutils literal notranslate"><span class="pre">CLIArgError</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#npdoc_cli.FunctionInput"><code class="docutils literal notranslate"><span class="pre">FunctionInput</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npdoc_cli.FunctionInput.pa"><code class="docutils literal notranslate"><span class="pre">FunctionInput.pa</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npdoc_cli.FunctionInput.kwa"><code class="docutils literal notranslate"><span class="pre">FunctionInput.kwa</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npdoc_cli.FunctionInput.disp"><code class="docutils literal notranslate"><span class="pre">FunctionInput.disp()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#npdoc_cli.NumpyDocCommand"><code class="docutils literal notranslate"><span class="pre">NumpyDocCommand</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npdoc_cli.NumpyDocCommand.obj"><code class="docutils literal notranslate"><span class="pre">NumpyDocCommand.obj</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npdoc_cli.NumpyDocCommand.fname"><code class="docutils literal notranslate"><span class="pre">NumpyDocCommand.fname</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npdoc_cli.NumpyDocCommand.defaults"><code class="docutils literal notranslate"><span class="pre">NumpyDocCommand.defaults</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npdoc_cli.NumpyDocCommand.types"><code class="docutils literal notranslate"><span class="pre">NumpyDocCommand.types</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npdoc_cli.NumpyDocCommand.disp"><code class="docutils literal notranslate"><span class="pre">NumpyDocCommand.disp()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npdoc_cli.NumpyDocCommand.scrape"><code class="docutils literal notranslate"><span class="pre">NumpyDocCommand.scrape()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#npdoc_cli.NumpyDocCLI"><code class="docutils literal notranslate"><span class="pre">NumpyDocCLI</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npdoc_cli.NumpyDocCLI.entry"><code class="docutils literal notranslate"><span class="pre">NumpyDocCLI.entry</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npdoc_cli.NumpyDocCLI.commands"><code class="docutils literal notranslate"><span class="pre">NumpyDocCLI.commands</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npdoc_cli.NumpyDocCLI.subcommands"><code class="docutils literal notranslate"><span class="pre">NumpyDocCLI.subcommands</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npdoc_cli.NumpyDocCLI.program_parser"><code class="docutils literal notranslate"><span class="pre">NumpyDocCLI.program_parser</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npdoc_cli.NumpyDocCLI.command_parsers"><code class="docutils literal notranslate"><span class="pre">NumpyDocCLI.command_parsers</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npdoc_cli.NumpyDocCLI.subcommand_parsers"><code class="docutils literal notranslate"><span class="pre">NumpyDocCLI.subcommand_parsers</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npdoc_cli.NumpyDocCLI.reset"><code class="docutils literal notranslate"><span class="pre">NumpyDocCLI.reset()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npdoc_cli.NumpyDocCLI.program"><code class="docutils literal notranslate"><span class="pre">NumpyDocCLI.program()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npdoc_cli.NumpyDocCLI.command"><code class="docutils literal notranslate"><span class="pre">NumpyDocCLI.command()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npdoc_cli.NumpyDocCLI.subcommand"><code class="docutils literal notranslate"><span class="pre">NumpyDocCLI.subcommand()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npdoc_cli.NumpyDocCLI.tree"><code class="docutils literal notranslate"><span class="pre">NumpyDocCLI.tree()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npdoc_cli.NumpyDocCLI.build"><code class="docutils literal notranslate"><span class="pre">NumpyDocCLI.build()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npdoc_cli.NumpyDocCLI.parse_args"><code class="docutils literal notranslate"><span class="pre">NumpyDocCLI.parse_args()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npdoc_cli.NumpyDocCLI.print_help"><code class="docutils literal notranslate"><span class="pre">NumpyDocCLI.print_help()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npdoc_cli.NumpyDocCLI.dispatch"><code class="docutils literal notranslate"><span class="pre">NumpyDocCLI.dispatch()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#npdoc_cli.cli"><code class="docutils literal notranslate"><span class="pre">cli</span></code></a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="module-npdoc_cli">
+<span id="npdoc-cli"></span><h1>npdoc_cli<a class="headerlink" href="#module-npdoc_cli" title="Link to this heading">#</a></h1>
+<p>Created on Sat Feb  1 11:54:32 2025</p>
+<p>&#64;author: coleg</p>
+<section id="attributes">
+<h2>Attributes<a class="headerlink" href="#attributes" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#npdoc_cli.cli" title="npdoc_cli.cli"><code class="xref py py-obj docutils literal notranslate"><span class="pre">cli</span></code></a></p></td>
+<td><p>Instance of <a class="reference internal" href="#npdoc_cli.NumpyDocCLI" title="npdoc_cli.NumpyDocCLI"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NumpyDocCLI</span></code></a> for generating CLI's.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="exceptions">
+<h2>Exceptions<a class="headerlink" href="#exceptions" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#npdoc_cli.CLIArgError" title="npdoc_cli.CLIArgError"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CLIArgError</span></code></a></p></td>
+<td><p>Error caused by invalid doc strings.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="classes">
+<h2>Classes<a class="headerlink" href="#classes" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#npdoc_cli.FunctionInput" title="npdoc_cli.FunctionInput"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FunctionInput</span></code></a></p></td>
+<td><p>Class for organizing function inputs.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#npdoc_cli.NumpyDocCommand" title="npdoc_cli.NumpyDocCommand"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NumpyDocCommand</span></code></a></p></td>
+<td><p>Class for parsing function signatures/doc strings in argparse objects.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#npdoc_cli.NumpyDocCLI" title="npdoc_cli.NumpyDocCLI"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NumpyDocCLI</span></code></a></p></td>
+<td><p>Class for generating a CLI from numpy doc strings and type signatures.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="package-contents">
+<h2>Package Contents<a class="headerlink" href="#package-contents" title="Link to this heading">#</a></h2>
+<dl class="py exception">
+<dt class="sig sig-object py" id="npdoc_cli.CLIArgError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">npdoc_cli.</span></span><span class="sig-name descname"><span class="pre">CLIArgError</span></span><a class="headerlink" href="#npdoc_cli.CLIArgError" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">Exception</span></code></p>
+<p>Error caused by invalid doc strings.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="npdoc_cli.FunctionInput">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">npdoc_cli.</span></span><span class="sig-name descname"><span class="pre">FunctionInput</span></span><a class="headerlink" href="#npdoc_cli.FunctionInput" title="Link to this definition">#</a></dt>
+<dd><p>Class for organizing function inputs.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="npdoc_cli.FunctionInput.pa">
+<span class="sig-name descname"><span class="pre">pa</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[]</span></em><a class="headerlink" href="#npdoc_cli.FunctionInput.pa" title="Link to this definition">#</a></dt>
+<dd><p>List of positional arguments for a function input.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="npdoc_cli.FunctionInput.kwa">
+<span class="sig-name descname"><span class="pre">kwa</span></span><a class="headerlink" href="#npdoc_cli.FunctionInput.kwa" title="Link to this definition">#</a></dt>
+<dd><p>Dictionairy of keyword arguments for a function input.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="npdoc_cli.FunctionInput.disp">
+<span class="sig-name descname"><span class="pre">disp</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#npdoc_cli.FunctionInput.disp" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="npdoc_cli.NumpyDocCommand">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">npdoc_cli.</span></span><span class="sig-name descname"><span class="pre">NumpyDocCommand</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">callable</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#npdoc_cli.NumpyDocCommand" title="Link to this definition">#</a></dt>
+<dd><p>Class for parsing function signatures/doc strings in argparse objects.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="npdoc_cli.NumpyDocCommand.obj">
+<span class="sig-name descname"><span class="pre">obj</span></span><a class="headerlink" href="#npdoc_cli.NumpyDocCommand.obj" title="Link to this definition">#</a></dt>
+<dd><p>Object called to and called during cli dispatch.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="npdoc_cli.NumpyDocCommand.fname">
+<span class="sig-name descname"><span class="pre">fname</span></span><a class="headerlink" href="#npdoc_cli.NumpyDocCommand.fname" title="Link to this definition">#</a></dt>
+<dd><p>Name of <code class="docutils literal notranslate"><span class="pre">obj</span></code>.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="npdoc_cli.NumpyDocCommand.defaults">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">defaults</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">dict</span></em><a class="headerlink" href="#npdoc_cli.NumpyDocCommand.defaults" title="Link to this definition">#</a></dt>
+<dd><p>Dictionairy of keyword arguments and their default value</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="npdoc_cli.NumpyDocCommand.types">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">types</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">dict</span></em><a class="headerlink" href="#npdoc_cli.NumpyDocCommand.types" title="Link to this definition">#</a></dt>
+<dd><p>Dictionairy of arguments and types.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="npdoc_cli.NumpyDocCommand.disp">
+<span class="sig-name descname"><span class="pre">disp</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#npdoc_cli.NumpyDocCommand.disp" title="Link to this definition">#</a></dt>
+<dd><p>Print scraped settings for debugging.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="npdoc_cli.NumpyDocCommand.scrape">
+<span class="sig-name descname"><span class="pre">scrape</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">replace_underscores</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#npdoc_cli.FunctionInput" title="npdoc_cli.FunctionInput"><span class="pre">FunctionInput</span></a></span></span><a class="headerlink" href="#npdoc_cli.NumpyDocCommand.scrape" title="Link to this definition">#</a></dt>
+<dd><p>Scrape doc strings and functions signature.</p>
+<p>Turns doc strings and function signatures into settings that can be
+passed into argparse to generate a command line interface.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>replace_underscores</strong><span class="classifier">bool, optional</span></dt><dd><p>Replace underscores in argument/function names with
+dashes, stylistic choice. The default is True.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl>
+<dt><strong>parser_ins</strong><span class="classifier"><a class="reference internal" href="#npdoc_cli.FunctionInput" title="npdoc_cli.FunctionInput"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FunctionInput</span></code></a></span></dt><dd><p>Inputs to be passed into argparse.ArgumentParser</p>
+</dd>
+<dt><strong>arg_ins_ls</strong><span class="classifier"><a class="reference internal" href="#npdoc_cli.FunctionInput" title="npdoc_cli.FunctionInput"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FunctionInput</span></code></a></span></dt><dd><p>Inputs to be passed into argparse.ArgumentParser.add_argument</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt>CLIArgError</dt><dd><p>If problem is found with an argument’s signature or documentation.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="npdoc_cli.NumpyDocCLI">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">npdoc_cli.</span></span><span class="sig-name descname"><span class="pre">NumpyDocCLI</span></span><a class="headerlink" href="#npdoc_cli.NumpyDocCLI" title="Link to this definition">#</a></dt>
+<dd><p>Class for generating a CLI from numpy doc strings and type signatures.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="npdoc_cli.NumpyDocCLI.entry">
+<span class="sig-name descname"><span class="pre">entry</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#npdoc_cli.NumpyDocCLI.entry" title="Link to this definition">#</a></dt>
+<dd><p><a class="reference internal" href="#npdoc_cli.NumpyDocCommand" title="npdoc_cli.NumpyDocCommand"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NumpyDocCommand</span></code></a> of program entry point.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="npdoc_cli.NumpyDocCLI.commands">
+<span class="sig-name descname"><span class="pre">commands</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[]</span></em><a class="headerlink" href="#npdoc_cli.NumpyDocCLI.commands" title="Link to this definition">#</a></dt>
+<dd><p>List of <a class="reference internal" href="#npdoc_cli.NumpyDocCommand" title="npdoc_cli.NumpyDocCommand"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NumpyDocCommand</span></code></a> for program commands.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="npdoc_cli.NumpyDocCLI.subcommands">
+<span class="sig-name descname"><span class="pre">subcommands</span></span><a class="headerlink" href="#npdoc_cli.NumpyDocCLI.subcommands" title="Link to this definition">#</a></dt>
+<dd><p>Dictionairy of <a class="reference internal" href="#npdoc_cli.NumpyDocCommand" title="npdoc_cli.NumpyDocCommand"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NumpyDocCommand</span></code></a> for each subcommands.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="npdoc_cli.NumpyDocCLI.program_parser">
+<span class="sig-name descname"><span class="pre">program_parser</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#npdoc_cli.NumpyDocCLI.program_parser" title="Link to this definition">#</a></dt>
+<dd><p>ArgumentParser for program entry point.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="npdoc_cli.NumpyDocCLI.command_parsers">
+<span class="sig-name descname"><span class="pre">command_parsers</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[]</span></em><a class="headerlink" href="#npdoc_cli.NumpyDocCLI.command_parsers" title="Link to this definition">#</a></dt>
+<dd><p>ArgumentParser for each command.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="npdoc_cli.NumpyDocCLI.subcommand_parsers">
+<span class="sig-name descname"><span class="pre">subcommand_parsers</span></span><a class="headerlink" href="#npdoc_cli.NumpyDocCLI.subcommand_parsers" title="Link to this definition">#</a></dt>
+<dd><p>ArgumentParser for each subcommand</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="npdoc_cli.NumpyDocCLI.reset">
+<span class="sig-name descname"><span class="pre">reset</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#npdoc_cli.NumpyDocCLI.reset" title="Link to this definition">#</a></dt>
+<dd><p>Reset CLI to empty.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt>None.</dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="npdoc_cli.NumpyDocCLI.program">
+<span class="sig-name descname"><span class="pre">program</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">function</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">callable</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">callable</span></span></span><a class="headerlink" href="#npdoc_cli.NumpyDocCLI.program" title="Link to this definition">#</a></dt>
+<dd><p>Wrapper function to define the entry point.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>function</strong><span class="classifier">callable</span></dt><dd><p>That is called.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>function</strong><span class="classifier">callable</span></dt><dd><p>The passed function, unmodified.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="npdoc_cli.NumpyDocCLI.command">
+<span class="sig-name descname"><span class="pre">command</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">object</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">object</span></span></span><a class="headerlink" href="#npdoc_cli.NumpyDocCLI.command" title="Link to this definition">#</a></dt>
+<dd><p>Wrapper function to defined commands for entry point.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>obj</strong><span class="classifier">object</span></dt><dd><p>Class definition if using subcommands, function it not.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>object</dt><dd><p>Same object passed as input, unmodified.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="npdoc_cli.NumpyDocCLI.subcommand">
+<span class="sig-name descname"><span class="pre">subcommand</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">function</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">callable</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">callable</span></span></span><a class="headerlink" href="#npdoc_cli.NumpyDocCLI.subcommand" title="Link to this definition">#</a></dt>
+<dd><p>Wrapper function to define subcommands for a command.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>function</strong><span class="classifier">object</span></dt><dd><p>Function to be called as subcommand. Should belong as submethod
+to its parent commmand’s class definition.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>function</strong><span class="classifier">callable</span></dt><dd><p>Same function passed, unmodified.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="npdoc_cli.NumpyDocCLI.tree">
+<span class="sig-name descname"><span class="pre">tree</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#npdoc_cli.NumpyDocCLI.tree" title="Link to this definition">#</a></dt>
+<dd><p>Print program/command/subcommand heirarchy.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt>None.</dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="npdoc_cli.NumpyDocCLI.build">
+<span class="sig-name descname"><span class="pre">build</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">command_instances</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">object</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">replace_underscores</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sort</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'None'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#npdoc_cli.NumpyDocCLI.build" title="Link to this definition">#</a></dt>
+<dd><p>Build a CLI.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>*instances</strong><span class="classifier">object</span></dt><dd><p>Instances of classes wrapped in command to use when calling
+subcommands. If an instance of a command wrapped class is not
+passed, the class itself will be used to call the subcommand.</p>
+</dd>
+<dt><strong>replace_underscores</strong><span class="classifier">bool, optional</span></dt><dd><p>Repace underscores in argument/command names with dashes.
+The default is True.</p>
+</dd>
+<dt><strong>sort</strong><span class="classifier">str, {None, alphabetical}</span></dt><dd><p>Sort commands and subcommands by key.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>None.</dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="npdoc_cli.NumpyDocCLI.parse_args">
+<span class="sig-name descname"><span class="pre">parse_args</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">args</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">argparse.Namespace</span></span></span><a class="headerlink" href="#npdoc_cli.NumpyDocCLI.parse_args" title="Link to this definition">#</a></dt>
+<dd><p>Parse command line arguments.</p>
+<p>See argparse.ArgumentParser.parse_args for more info.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>args</strong><span class="classifier">list[str], optional</span></dt><dd><p>List of arguments to parse. If None, parses from command line.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>argparse.Namespace</dt><dd><p>Parsed arguments.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="npdoc_cli.NumpyDocCLI.print_help">
+<span class="sig-name descname"><span class="pre">print_help</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#npdoc_cli.NumpyDocCLI.print_help" title="Link to this definition">#</a></dt>
+<dd><p>Print help string for CLI</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt>None.</dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="npdoc_cli.NumpyDocCLI.dispatch">
+<span class="sig-name descname"><span class="pre">dispatch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">args</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">argparse.Namespace</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#npdoc_cli.NumpyDocCLI.dispatch" title="Link to this definition">#</a></dt>
+<dd><p>Dispatch command line arguments to a the right function.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>args</strong><span class="classifier">_ap.Namespace</span></dt><dd><p>Output of <a class="reference internal" href="#npdoc_cli.NumpyDocCLI.parse_args" title="npdoc_cli.NumpyDocCLI.parse_args"><code class="xref py py-meth docutils literal notranslate"><span class="pre">NumpyDocCLI.parse_args()</span></code></a>.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>any</dt><dd><p>Output of dispatched function.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="npdoc_cli.cli">
+<span class="sig-prename descclassname"><span class="pre">npdoc_cli.</span></span><span class="sig-name descname"><span class="pre">cli</span></span><a class="headerlink" href="#npdoc_cli.cli" title="Link to this definition">#</a></dt>
+<dd><p>Instance of <a class="reference internal" href="#npdoc_cli.NumpyDocCLI" title="npdoc_cli.NumpyDocCLI"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NumpyDocCLI</span></code></a> for generating CLI’s.</p>
+</dd></dl>
+
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../index.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">API Reference</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#attributes">Attributes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exceptions">Exceptions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#classes">Classes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#package-contents">Package Contents</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#npdoc_cli.CLIArgError"><code class="docutils literal notranslate"><span class="pre">CLIArgError</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#npdoc_cli.FunctionInput"><code class="docutils literal notranslate"><span class="pre">FunctionInput</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npdoc_cli.FunctionInput.pa"><code class="docutils literal notranslate"><span class="pre">FunctionInput.pa</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npdoc_cli.FunctionInput.kwa"><code class="docutils literal notranslate"><span class="pre">FunctionInput.kwa</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npdoc_cli.FunctionInput.disp"><code class="docutils literal notranslate"><span class="pre">FunctionInput.disp()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#npdoc_cli.NumpyDocCommand"><code class="docutils literal notranslate"><span class="pre">NumpyDocCommand</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npdoc_cli.NumpyDocCommand.obj"><code class="docutils literal notranslate"><span class="pre">NumpyDocCommand.obj</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npdoc_cli.NumpyDocCommand.fname"><code class="docutils literal notranslate"><span class="pre">NumpyDocCommand.fname</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npdoc_cli.NumpyDocCommand.defaults"><code class="docutils literal notranslate"><span class="pre">NumpyDocCommand.defaults</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npdoc_cli.NumpyDocCommand.types"><code class="docutils literal notranslate"><span class="pre">NumpyDocCommand.types</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npdoc_cli.NumpyDocCommand.disp"><code class="docutils literal notranslate"><span class="pre">NumpyDocCommand.disp()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npdoc_cli.NumpyDocCommand.scrape"><code class="docutils literal notranslate"><span class="pre">NumpyDocCommand.scrape()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#npdoc_cli.NumpyDocCLI"><code class="docutils literal notranslate"><span class="pre">NumpyDocCLI</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npdoc_cli.NumpyDocCLI.entry"><code class="docutils literal notranslate"><span class="pre">NumpyDocCLI.entry</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npdoc_cli.NumpyDocCLI.commands"><code class="docutils literal notranslate"><span class="pre">NumpyDocCLI.commands</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npdoc_cli.NumpyDocCLI.subcommands"><code class="docutils literal notranslate"><span class="pre">NumpyDocCLI.subcommands</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npdoc_cli.NumpyDocCLI.program_parser"><code class="docutils literal notranslate"><span class="pre">NumpyDocCLI.program_parser</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npdoc_cli.NumpyDocCLI.command_parsers"><code class="docutils literal notranslate"><span class="pre">NumpyDocCLI.command_parsers</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npdoc_cli.NumpyDocCLI.subcommand_parsers"><code class="docutils literal notranslate"><span class="pre">NumpyDocCLI.subcommand_parsers</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npdoc_cli.NumpyDocCLI.reset"><code class="docutils literal notranslate"><span class="pre">NumpyDocCLI.reset()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npdoc_cli.NumpyDocCLI.program"><code class="docutils literal notranslate"><span class="pre">NumpyDocCLI.program()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npdoc_cli.NumpyDocCLI.command"><code class="docutils literal notranslate"><span class="pre">NumpyDocCLI.command()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npdoc_cli.NumpyDocCLI.subcommand"><code class="docutils literal notranslate"><span class="pre">NumpyDocCLI.subcommand()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npdoc_cli.NumpyDocCLI.tree"><code class="docutils literal notranslate"><span class="pre">NumpyDocCLI.tree()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npdoc_cli.NumpyDocCLI.build"><code class="docutils literal notranslate"><span class="pre">NumpyDocCLI.build()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npdoc_cli.NumpyDocCLI.parse_args"><code class="docutils literal notranslate"><span class="pre">NumpyDocCLI.parse_args()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npdoc_cli.NumpyDocCLI.print_help"><code class="docutils literal notranslate"><span class="pre">NumpyDocCLI.print_help()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#npdoc_cli.NumpyDocCLI.dispatch"><code class="docutils literal notranslate"><span class="pre">NumpyDocCLI.dispatch()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#npdoc_cli.cli"><code class="docutils literal notranslate"><span class="pre">cli</span></code></a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Daniel Cole Gray
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2025, Daniel Cole Gray.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

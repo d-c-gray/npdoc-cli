@@ -32,18 +32,18 @@ Computation times
    * - Example
      - Time
      - Mem (MB)
+   * - :ref:`sphx_glr_auto_examples_plot_e01_program.py` (``..\..\examples\plot_e01_program.py``)
+     - 00:00.009
+     - 0.0
    * - :ref:`sphx_glr_auto_examples_plot_e04_commands_subcommands.py` (``..\..\examples\plot_e04_commands_subcommands.py``)
      - 00:00.009
      - 0.0
    * - :ref:`sphx_glr_auto_examples_plot_e02_typing.py` (``..\..\examples\plot_e02_typing.py``)
      - 00:00.007
      - 0.0
-   * - :ref:`sphx_glr_auto_examples_plot_e01_program.py` (``..\..\examples\plot_e01_program.py``)
-     - 00:00.007
-     - 0.0
    * - :ref:`sphx_glr_auto_examples_plot_e05_naming.py` (``..\..\examples\plot_e05_naming.py``)
-     - 00:00.006
+     - 00:00.005
      - 0.0
    * - :ref:`sphx_glr_auto_examples_plot_e03_docstrings.py` (``..\..\examples\plot_e03_docstrings.py``)
-     - 00:00.004
+     - 00:00.003
      - 0.0

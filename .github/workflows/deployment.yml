@@ -30,6 +30,7 @@ jobs:
       - name: Sphinx build
         if: success()
         run: |
+          rm -rf docs/source/auto_examples/
           sphinx-build -M html docs/source/ docs/build/
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3

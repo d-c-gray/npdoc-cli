@@ -9,7 +9,7 @@
 project = 'npdoc-cli'
 copyright = '2025, Daniel Cole Gray'
 author = 'Daniel Cole Gray'
-release = '1.0'
+release = '0.0.2'
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
@@ -17,7 +17,8 @@ release = '1.0'
 extensions = [
     'numpydoc',
     'autoapi.extension',
-    'sphinx_gallery.gen_gallery'
+    'sphinx_gallery.gen_gallery',
+    'sphinx.ext.githubpages'
     ]
 
 templates_path = ['_templates']
@@ -33,6 +34,8 @@ sphinx_gallery_conf = {
      'run_stale_examples': True
      }
 
+
+
 # -- AUTO API OPTIONS --------
 autoapi_dirs = ['../../src/npdoc_cli']
 autoapi_options = [
@@ -41,9 +44,6 @@ autoapi_options = [
     'show-inheritance',
     'show-module-summary',
     'imported-members']
-autoapi_ignore = [
-    '*migrations*'
-    ]
 
 # -- Options for HTML output -------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output

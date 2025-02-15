@@ -6,7 +6,7 @@
 
 Computation times
 =================
-**00:00.034** total execution time for 5 files **from all galleries**:
+**00:00.032** total execution time for 5 files **from all galleries**:
 
 .. container::
 
@@ -33,16 +33,16 @@ Computation times
      - Time
      - Mem (MB)
    * - :ref:`sphx_glr_auto_examples_plot_e04_commands_subcommands.py` (``..\..\examples\plot_e04_commands_subcommands.py``)
-     - 00:00.010
-     - 0.0
-   * - :ref:`sphx_glr_auto_examples_plot_e01_program.py` (``..\..\examples\plot_e01_program.py``)
-     - 00:00.008
+     - 00:00.009
      - 0.0
    * - :ref:`sphx_glr_auto_examples_plot_e02_typing.py` (``..\..\examples\plot_e02_typing.py``)
      - 00:00.007
      - 0.0
+   * - :ref:`sphx_glr_auto_examples_plot_e01_program.py` (``..\..\examples\plot_e01_program.py``)
+     - 00:00.007
+     - 0.0
    * - :ref:`sphx_glr_auto_examples_plot_e05_naming.py` (``..\..\examples\plot_e05_naming.py``)
-     - 00:00.005
+     - 00:00.006
      - 0.0
    * - :ref:`sphx_glr_auto_examples_plot_e03_docstrings.py` (``..\..\examples\plot_e03_docstrings.py``)
      - 00:00.004

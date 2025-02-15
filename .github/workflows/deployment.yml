@@ -22,6 +22,7 @@ jobs:
           pip install sphinx-autoapi==3.4.0
           pip install sphinx-book-theme==1.1.3
           pip install sphinx-gallery==0.18.0
+          pip install astroid=3.3.8
           pip install pytest
       - name: Pytests
         if: success()

@@ -263,10 +263,10 @@ Resolution Order
 The :py:obj:`NumpyDocCLI` class (of which ``cli`` is an instance) delays
 building the CLI until ``cli.build()`` is called. You don't need to declare
 your programs/commands/subcommands in any particular order. By default,
-commands and subcommands will be added tracked in the order they are defined.
+commands and subcommands will be added in the order they are defined.
 If they are spread out across modules, that will depend on the order the
 modules are imported. Optionally, you can change the sort setting when calling
-build
+``cli.build``.
 
 .. GENERATED FROM PYTHON SOURCE LINES 170-215
 
@@ -353,7 +353,7 @@ build
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.016 seconds)
+   **Total running time of the script:** (0 minutes 0.010 seconds)
 
 
 .. _sphx_glr_download_auto_examples_plot_e04_commands_subcommands.py:

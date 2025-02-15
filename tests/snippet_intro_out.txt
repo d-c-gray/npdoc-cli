@@ -5,5 +5,5 @@ Say hello!
 positional arguments:
   name        Who is being greeted.
 
-optional arguments:
+options:
   -h, --help  show this help message and exit

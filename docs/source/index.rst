@@ -32,12 +32,20 @@ Command line arguments can be parsed and dispatched to the right function by:
     args = cli.parse_args()
     cli.dispatch(args)
 
+Installation
+============
+
+Intall with pip.
+
+.. code-block:: console
+
+    pip install npdoc-cli
+
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
 
    auto_examples/index.rst
-
 
 Indices and tables
 ==================

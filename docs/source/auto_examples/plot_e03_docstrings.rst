@@ -201,7 +201,7 @@ This line will not be included in the help message of the generated CLI.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.006 seconds)
+   **Total running time of the script:** (0 minutes 0.004 seconds)
 
 
 .. _sphx_glr_download_auto_examples_plot_e03_docstrings.py:

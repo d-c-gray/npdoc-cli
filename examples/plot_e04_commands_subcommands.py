@@ -163,10 +163,10 @@ cli.dispatch(args)
 # The :py:obj:`NumpyDocCLI` class (of which ``cli`` is an instance) delays
 # building the CLI until ``cli.build()`` is called. You don't need to declare
 # your programs/commands/subcommands in any particular order. By default,
-# commands and subcommands will be added tracked in the order they are defined.
+# commands and subcommands will be added in the order they are defined.
 # If they are spread out across modules, that will depend on the order the
 # modules are imported. Optionally, you can change the sort setting when calling
-# build
+# ``cli.build``.
 
 cli.reset()
 
